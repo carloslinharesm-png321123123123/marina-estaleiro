@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marina Estaleiro — Guarda de Barcos, Passeios e Pesca Esportiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0F14;
+    --slate:#3F4A57;
+    --gray:#8993A1;
+    --gray-light:#E4E8ED;
+    --off-white:#F5F7FA;
+    --white:#FFFFFF;
+    --navy:#101E33;
+    --navy-2:#16294A;
+    --blue:#2A5FE0;
+    --blue-deep:#1A3E8C;
+    --sky:#9DC2FA;
+    --wa-green:#25D366;
+    --radius-lg:26px;
+    --radius-md:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--white);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    letter-spacing:-0.02em;
+  }
+  a{text-decoration:none;color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media(max-width:640px){.container{padding:0 20px;}}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--gray-light);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 32px;
+    max-width:1180px;margin:0 auto;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;
+    color:var(--ink);
+  }
+  .logo .dot{
+    width:10px;height:10px;border-radius:3px;
+    background:var(--blue);
+  }
+  .nav-links{
+    display:flex;gap:32px;font-weight:500;font-size:0.94rem;color:var(--slate);
+  }
+  .nav-links a{opacity:0.85;transition:opacity .2s,color .2s;}
+  .nav-links a:hover{opacity:1;color:var(--blue);}
+  .nav-cta{
+    display:flex;align-items:center;gap:8px;
+    background:var(--wa-green);color:#fff;
+    padding:10px 18px;border-radius:10px;
+    font-weight:600;font-size:0.9rem;
+    box-shadow:0 6px 16px rgba(37,211,102,0.28);
+    transition:transform .2s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+  @media(max-width:860px){.nav-links{display:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:88px 0 0;
+    background:
+      radial-gradient(circle at 85% 10%, rgba(42,95,224,0.08), transparent 45%),
+      radial-gradient(circle at 5% 90%, rgba(42,95,224,0.06), transparent 40%),
+      var(--white);
+    overflow:hidden;
+  }
+  .hero-inner{
+    display:grid;grid-template-columns:1fr;gap:40px;
+    align-items:center;
+    padding-bottom:60px;
+    max-width:640px;
+    margin:0 auto;
+    text-align:center;
+  }
+  @media(max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center;}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(42,95,224,0.08);color:var(--blue);
+    padding:8px 18px;border-radius:8px;
+    font-weight:700;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;
+    margin-bottom:22px;
+    border:1px solid rgba(42,95,224,0.14);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,5vw,3.8rem);
+    line-height:1.05;
+    color:var(--ink);
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--blue);
+  }
+  .hero p.lead{
+    font-size:1.1rem;line-height:1.65;color:var(--slate);
+    max-width:480px;margin-bottom:34px;
+  }
+  @media(max-width:900px){.hero p.lead{margin-left:auto;margin-right:auto;}}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+  @media(max-width:900px){.cta-row{justify-content:center;}}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--wa-green);color:#fff;
+    padding:16px 28px;border-radius:12px;
+    font-weight:700;font-size:1rem;
+    box-shadow:0 10px 24px rgba(37,211,102,0.32);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(37,211,102,0.42);}
+  .btn-primary svg{width:20px;height:20px;flex-shrink:0;}
+  .btn-secondary{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:16px 24px;border-radius:12px;
+    border:1.5px solid var(--ink);color:var(--ink);
+    font-weight:600;
+    transition:background .2s,color .2s;
+  }
+  .btn-secondary:hover{background:var(--ink);color:#fff;}
+
+  .hero-art{
+    position:relative;height:380px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .logo-lockup{
+    display:flex;flex-direction:column;align-items:center;gap:0;
+  }
+  .logo-img{
+    width:460px;max-width:100%;height:auto;
+    margin-bottom:-100px;
+  }
+  .logo-wordmark{
+    display:flex;flex-direction:column;align-items:center;line-height:1.05;
+  }
+  .wm-small{
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.3rem;
+    letter-spacing:0.18em;color:var(--ink);
+  }
+  .wm-big{
+    font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:2.8rem;
+    letter-spacing:0.02em;color:var(--blue);
+  }
+  .hero-art svg{width:100%;height:100%;}
+
+  .wave-divider{
+    display:block;width:100%;line-height:0;
+  }
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .strip{
+    background:var(--navy);
+    padding:22px 0;
+  }
+  .strip-mark{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+  }
+  .strip-mark svg{width:22px;height:22px;stroke:var(--sky);flex-shrink:0;}
+  .strip-mark span{
+    color:var(--sky);
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services{
+    padding:100px 0 80px;
+    position:relative;
+  }
+  .section-head{
+    text-align:center;max-width:620px;margin:0 auto 64px;
+  }
+  .section-head .eyebrow{background:rgba(42,95,224,0.08);color:var(--blue);}
+  .section-head h2{
+    font-size:clamp(1.9rem,3.4vw,2.6rem);color:var(--ink);margin-bottom:14px;
+  }
+  .section-head p{color:var(--slate);font-size:1.05rem;line-height:1.6;}
+
+  .route-wrap{
+    position:relative;
+  }
+  .route-svg{
+    position:absolute;top:64px;left:0;width:100%;height:calc(100% - 64px);
+    z-index:0;pointer-events:none;
+  }
+  .cards{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  }
+  @media(max-width:900px){.cards{grid-template-columns:1fr;}.route-svg{display:none;}}
+  .card{
+    background:var(--white);
+    border-radius:var(--radius-lg);
+    padding:36px 30px;
+    box-shadow:0 12px 30px rgba(16,30,51,0.06);
+    border:1px solid var(--gray-light);
+    transition:transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(16,30,51,0.1);border-color:rgba(42,95,224,0.25);}
+  .card-icon{
+    width:60px;height:60px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
+    background:var(--off-white);
+    border:1px solid var(--gray-light);
+  }
+  .card-icon svg{width:30px;height:30px;stroke:var(--blue);}
+  .card h3{font-size:1.3rem;color:var(--ink);margin-bottom:10px;}
+  .card p{color:var(--slate);line-height:1.6;margin-bottom:20px;font-size:0.98rem;}
+  .card a.mini-cta{
+    font-weight:700;color:var(--blue);font-size:0.92rem;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .card a.mini-cta:hover{color:var(--blue-deep);}
+
+  /* ---------- FEATURES BAND ---------- */
+  .features{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    padding:88px 0;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  .features::before{
+    content:'';position:absolute;inset:0;
+    background-image:radial-gradient(circle,rgba(157,194,250,0.12) 1.5px,transparent 1.5px);
+    background-size:26px 26px;
+    opacity:0.5;
+  }
+  .features-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media(max-width:860px){.features-inner{grid-template-columns:1fr;}}
+  .features h2{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:18px;color:#fff;}
+  .features p{color:#B7C4D9;line-height:1.7;font-size:1.05rem;margin-bottom:10px;}
+  .feature-list{display:grid;gap:20px;}
+  .feature-item{display:flex;gap:16px;align-items:flex-start;}
+  .feature-item .feat-icon{
+    width:26px;height:26px;min-width:26px;
+    stroke:var(--sky);margin-top:2px;
+  }
+  .feature-item h4{font-size:1.05rem;margin-bottom:4px;color:#fff;}
+  .feature-item p{color:#9AAAC4;font-size:0.92rem;margin:0;}
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{
+    padding:100px 0;
+    text-align:center;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(42,95,224,0.06), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(16,30,51,0.05), transparent 45%),
+      var(--off-white);
+  }
+  .cta-banner h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--ink);margin-bottom:16px;}
+  .cta-banner p{color:var(--slate);font-size:1.1rem;max-width:480px;margin:0 auto 34px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy);color:#9AAAC4;
+    padding:56px 0 28px;
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;
+    margin-bottom:40px;
+  }
+  @media(max-width:760px){.footer-grid{grid-template-columns:1fr;}}
+  footer h4{color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;margin-bottom:16px;}
+  footer .logo{color:#fff;margin-bottom:14px;}
+  footer .logo .dot{background:var(--sky);}
+  footer p, footer a{color:#9AAAC4;font-size:0.92rem;line-height:1.8;}
+  footer a:hover{color:var(--sky);}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:22px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:0.82rem;color:#6E7F9C;
+  }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .wa-float{
+    position:fixed;bottom:24px;right:24px;z-index:200;
+    width:58px;height:58px;border-radius:16px;
+    background:var(--wa-green);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px rgba(37,211,102,0.4);
+    animation:float-pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes float-pulse{
+    0%,100%{box-shadow:0 10px 26px rgba(37,211,102,0.4);}
+    50%{box-shadow:0 10px 34px rgba(37,211,102,0.6);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+
+  .reveal{
+    opacity:0;transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div></div>
+    <nav class="nav-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#guarda">Guarda de Barcos</a>
+      <a href="#passeios">Passeios</a>
+      <a href="#pesca">Pesca Esportiva</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/554792186080?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Marina%20Estaleiro." target="_blank" rel="noopener">
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="eyebrow">Marina Estaleiro</span>
+      <h1>Seu verão <em>começa</em><br>na doca.</h1>
+      <p class="lead">Guarda de barcos, lanchas e jetskis com estrutura completa, passeios turísticos inesquecíveis e pesca esportiva com quem entende do mar. Tudo em um só lugar.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://wa.me/554792186080?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Marina%20Estaleiro." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.14.82.84-3.06-.19-.31a8.15 8.15 0 0 1-1.26-4.33c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4a8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.17 8.2Z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a class="btn-secondary" href="#servicos">Ver serviços</a>
+      </div>
+    </div>
+  </div>
+  <svg class="wave-divider" viewBox="0 0 1440 100" preserveAspectRatio="none">
+    <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,100 1440,50 L1440,100 L0,100 Z" fill="#FFFFFF"/>
+  </svg>
+</section>
+
+<div class="strip">
+  <div class="strip-mark">
+    <svg viewBox="0 0 48 48" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8 V32"/>
+      <path d="M24 12 a4 4 0 1 0 0.001 0"/>
+      <path d="M10 26 Q24 40 38 26"/>
+      <path d="M18 16 H30"/>
+    </svg>
+    <span>Marina Estaleiro</span>
+  </div>
+</div>
+
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">O que fazemos</span>
+      <h2>Diversas formas de curtir o mar</h2>
+      <p>Da guarda segura da sua embarcação às melhores histórias de pesca — a Marina Estaleiro cuida de cada parte da sua temporada.</p>
+    </div>
+
+    <div class="route-wrap">
+      <svg class="route-svg" viewBox="0 0 1180 260" preserveAspectRatio="none">
+        <path d="M120,40 C300,180 500,-40 590,120 C680,280 880,-40 1060,40"
+          stroke="#D7DEE7" stroke-width="2.5" stroke-dasharray="2 14" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="cards">
+        <div class="card reveal" id="guarda">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 30 Q24 26 40 30 L37 37 Q24 41 11 37 Z"/>
+              <path d="M24 30 V12"/>
+              <path d="M24 15 L34 26 H24 Z"/>
+            </svg>
+          </div>
+          <h3>Guarda de Embarcações</h3>
+          <p>Vaga coberta ou descoberta para barcos, lanchas e jetskis, com vigilância 24h, manutenção sob demanda e acesso facilitado à água.</p>
+          <a class="mini-cta" href="https://wa.me/554792186080?text=Ol%C3%A1!%20Quero%20guardar%20minha%20embarca%C3%A7%C3%A3o%20na%20Marina%20Estaleiro." target="_blank" rel="noopener">Consultar vagas →</a>
+        </div>
+        <div class="card reveal" id="passeios">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="24" cy="24" r="16"/>
+              <path d="M31 17 L26 26 L17 31 L22 22 Z"/>
+              <circle cx="24" cy="24" r="1.6" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>Passeios Turísticos</h3>
+          <p>Roteiros de barco pelas ilhas e praias mais bonitas da região, com equipe local e paradas para banho e fotos.</p>
+          <a class="mini-cta" href="https://wa.me/554792186080?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20passeios%20tur%C3%ADsticos." target="_blank" rel="noopener">Ver roteiros →</a>
+        </div>
+        <div class="card reveal" id="pesca">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 24 C14 14 30 14 38 20 C34 24 34 24 38 28 C30 34 14 34 6 24Z"/>
+              <circle cx="14" cy="22" r="1.6" fill="currentColor" stroke="none"/>
+              <path d="M38 20 L43 17 M38 28 L43 31"/>
+            </svg>
+          </div>
+          <h3>Pesca Esportiva</h3>
+          <p>Saídas para pesca oceânica com equipamento completo, guias experientes e os melhores pontos da costa.</p>
+          <a class="mini-cta" href="https://wa.me/554792186080?text=Ol%C3%A1!%20Quero%20agendar%20uma%20pescaria." target="_blank" rel="noopener">Agendar pescaria →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container features-inner">
+    <div class="reveal">
+      <h2>Por que a Marina Estaleiro?</h2>
+      <p>Há pouco mais de um ano e meio cuidamos de embarcações e levamos famílias e pescadores para o mar, com segurança e estrutura de verdade.</p>
+    </div>
+    <div class="feature-list reveal">
+      <div class="feature-item">
+        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 6 V11 C20 16 16.5 20 12 21 C7.5 20 4 16 4 11 V6 Z"/><path d="M9 12 L11 14 L15.5 9.5"/></svg>
+        <div><h4>Segurança 24 horas</h4><p>Vigilância e controle de acesso em toda a marina, dia e noite.</p></div>
+      </div>
+      <div class="feature-item">
+        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18 L10 12 M14.5 6.5 C15.6 5.4 17.4 5.4 18.5 6.5 C19.6 7.6 19.6 9.4 18.5 10.5 L15 14 L10 9 L13.5 5.5"/><path d="M8 16 L10 18"/></svg>
+        <div><h4>Estrutura completa</h4><p>Rampa de acesso, combustível, manutenção e apoio náutico no local.</p></div>
+      </div>
+      <div class="feature-item">
+        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15 9 L12.6 12.6 L9 15 L11.4 11.4 Z"/></svg>
+        <div><h4>Equipe experiente</h4><p>Marinheiros e guias que conhecem cada canal, ilha e pesqueiro da região.</p></div>
+      </div>
+      <div class="feature-item">
+        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 C12 21 5 14.5 5 9.5 C5 5.9 8.1 3 12 3 C15.9 3 19 5.9 19 9.5 C19 14.5 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+        <div><h4>Localização privilegiada</h4><p>Acesso rápido para a Baía da Babitonga.</p></div>
+      </div>
+      <div class="feature-item">
+        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15 Q7 11 12 15 Q17 19 21 15"/><path d="M3 10 Q7 6 12 10 Q17 14 21 10"/></svg>
+        <div><h4>Sem alteração de maré</h4><p>Acesso à água estável o dia todo, sem depender da tábua de marés.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="reveal">Pronto pra colocar<br>o barco na água?</h2>
+    <p class="reveal">Fale agora com a nossa equipe pelo WhatsApp e garanta sua vaga, passeio ou pescaria.</p>
+    <a class="btn-primary reveal" href="https://wa.me/554792186080?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20Marina%20Estaleiro." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.14.82.84-3.06-.19-.31a8.15 8.15 0 0 1-1.26-4.33c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4a8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.17 8.2Z"/></svg>
+      Chamar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo"><span class="dot"></span>Marina Estaleiro</div>
+        <p>Guarda de barcos, lanchas e jetskis, passeios turísticos e pesca esportiva na melhor marina da região.</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p><a href="https://wa.me/554792186080" target="_blank" rel="noopener">(47) 99218-6080</a></p>
+        <p><a href="mailto:marinaestaleiro@gmail.com">marinaestaleiro@gmail.com</a></p>
+      </div>
+      <div>
+        <h4>Marina</h4>
+        <p>Rua José Dobrotinick, 990 — Vila da Glória, São Francisco do Sul, SC</p>
+        <p>Aberto todos os dias, 7h às 19h</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Marina Estaleiro. Todos os direitos reservados.</span>
+      <span>Feito para quem vive o mar.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/554792186080?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Marina%20Estaleiro." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.14.82.84-3.06-.19-.31a8.15 8.15 0 0 1-1.26-4.33c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4a8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.17 8.2Z"/></svg>
+</a>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
